@@ -20,8 +20,12 @@ raw TeX 누출 0건, MathJax 141개 전부 렌더, 잘린 표·겹친 글자 없
 
 1. **쪽번호와 러닝 푸터가 없다** — 19쪽짜리 기술 문서인데 "p.13 참조"가 불가능했다.
    Chrome headless 인쇄는 CSS `@page` margin box 를 지원하지 않으므로, 렌더 후 PyMuPDF 로 찍었다.
-   → `stamp_pages.py` 추가. 하단 규칙선 + 좌측 `softmax와 cross-entropy의 수치 버그 · arXiv:2610.31642`
-   + 우측 `n / 19`. 표지는 제외. 한글 폰트는 `NotoSansCJK-Regular.ttc` 를 임베드(없으면 ASCII 로 폴백).
+   → `stamp_pages.py` 추가. 하단 규칙선 + 좌측 러닝 타이틀 + 우측 `n / 19`. 표지는 제외.
+   러닝 타이틀은 **영문**으로 확정했다(`softmax / cross-entropy · arXiv:2610.31642`).
+   한글 푸터를 먼저 시도했으나 두 경로 모두 실패했다 — ⑴ `NotoSansCJK TTC` 를 그대로 임베드하면
+   PDF 가 1.5MB → **15MB** 로 커지고, ⑵ `doc.subset_fonts()` 는 이 CFF 기반 TTC 에서
+   `format error: Index bounds` 로 죽고, ⑶ fontTools 로 글자 서브셋한 TTF 를 넣으면 한글이
+   깨져 찍혔다. 본문이 이미 한글이므로 푸터만 영문으로 두고 1.5MB 를 택했다.
 
 2. **숫자 열이 좌측 정렬** — `-5.96e-8` / `-4.60e-8` 처럼 지수 표기 열이 자리수로 정렬되지 않아
    눈으로 비교가 안 됐다. (`td.n` 은 `text-align` 미지정이라 `th,td` 의 left 를 물려받음)
@@ -67,6 +71,7 @@ raw TeX 누출 0건, MathJax 141개 전부 렌더, 잘린 표·겹친 글자 없
 ## 남은 선택 (사용자 결정)
 
 - 표지 가운데 큰 여백을 그대로 둘지, 스텝 지도를 표지로 올릴지.
+- 한글 러닝 타이틀을 원하면 NotoSansCJK 를 CFF→TrueType 변환하는 파이프라인을 별도로 만들어야 한다(현재는 영문).
 - 부록 연습문제 번호를 `연습 1`~`10` 으로 바꿀지(현재는 `1`~`10`).
 - 흑백 인쇄를 전제로 도해 4색을 2색(실선/점선 + 명도)으로 줄일지.
 
