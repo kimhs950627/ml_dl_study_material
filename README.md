@@ -16,7 +16,7 @@ workbooks/
 
 | 주제 | 다루는 논문 | 상태 |
 |---|---|---|
-| [softmax-cross-entropy](workbooks/softmax-cross-entropy/) | Barron et al., *A Fix for Softmax and Cross-Entropy* (arXiv:2610.31642) | draft |
+| [softmax-cross-entropy](workbooks/softmax-cross-entropy/) | Barron et al., *A Fix for Softmax and Cross-Entropy* (arXiv:2610.31642) | **reviewed** (19쪽) · draft 보존 |
 
 ## 규칙
 

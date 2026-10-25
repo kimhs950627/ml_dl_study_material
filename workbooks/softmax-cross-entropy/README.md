@@ -17,9 +17,18 @@
 
 | 파일 | 설명 |
 |---|---|
-| `softmax-cross-entropy-workbook-draft.pdf` | A4 19쪽. 11 STEP + 연습문제 10 + 정답 |
-| `softmax-cross-entropy-workbook-draft.html` | PDF 원본 HTML. MathJax + SVG 도해 3개, 외부 이미지 없음 |
-| `verify_numbers.py` | 본문에 나오는 모든 수치의 계산 스크립트 |
+| `reviewed/softmax-cross-entropy-workbook.pdf` | **검토 통과본.** A4 19쪽, 러닝 푸터·쪽번호 포함 |
+| `reviewed/softmax-cross-entropy-workbook.html` | 검토본 HTML 원본 |
+| `reviewed/REVIEW.md` | design-craft 루브릭 리뷰 결과와 수정 내역 |
+| `reviewed/stamp_pages.py` | PDF 후처리(푸터·쪽번호·메타데이터) |
+| `draft/softmax-cross-entropy-workbook-draft.pdf` | 초안(수정 전, 비교용) |
+| `draft/softmax-cross-entropy-workbook-draft.html` | 초안 HTML |
+| `draft/verify_numbers.py` | 본문 수치 계산 스크립트 |
+
+## 검토 이력
+
+`draft/` → design-craft 루브릭(치명 0 · 중요 5 · 제안 6) → 중요 5건 전부 수정 + 제안 3건 반영 →
+`reviewed/`. 남은 선택 3건은 `reviewed/REVIEW.md` 마지막 절에 있다.
 
 ## 대상 독자
 
